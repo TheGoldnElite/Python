@@ -1,0 +1,6 @@
+x=float(35)
+y=int(432.3432)
+z=complex(35)
+print(x)
+print(y)
+print(z)
