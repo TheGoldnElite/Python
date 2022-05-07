@@ -2,36 +2,32 @@ from flask import Flask, render_template
 
 app=Flask(__name__)
 
+@app.route('/hello')
+def hello():
+    return "hello"
+
+@app.route('/')
+def checkerboard1():
+    return render_template("index.html", x=8,y=8,color1="black",color2="red")
+
+@app.route('/4')
+def checkerboard2():
+    return render_template("index.html",x=4,y=8,color1="black",color2="red")
 
 
-@app.route('<int:x>/<int:y>')
-
-def checkboard(x,y):
-    for i in range(0,y):
-        for j in range(0,x):
+@app.route('/<int:x>/<int:y>')
+def checkerboard3(x,y):
+    return render_template("index.html",x = x,y = y,color1 = "black",color2 = "red")
 
 
 
 
+# @app.route('/<int:x>/<int:y>/<string:color1>/<string:color2>')
+# def checkerboard4(x,y,color1,color2):
+#     return render_template("index.html,",x=x,y=y, color1=color1,color2=color2)
 
-
-
-
-
-
-
-# def checkboard(x,y):
-#     result=[]
-
-#     for j in range(0,y):
-#         temp=[]
-#         for i in range(0,x):
-#             temp.append((i+j) % 2)
-#     result.append(temp)
-
-#     return render_template("index.html", result=result)
-            
-
+    
+    
 
 
 if __name__ == "__main__":

@@ -9,24 +9,19 @@
 </head>
 <body>
     
-    <table>
-    {% for i in range(x): %}
+    <table class="table">
+    {% for i in range(x) %}
         <tr>
-        {% for j in range(y): %}
-            <td class="color1"></td>
-            <td class="color2"></td>
-            {% endfor%}
-        </tr>
-        <tr>
-            {% for j in range(y): %}
-            <td class="color2"></td>
-            <td class="color1"></td>
+        {% for j in range(y) %}
+        {% if (i+j) % 2 == 0 %}
+            <td class="color{{ (i+j) % 2 +1}}" style="background-color: {{color1}};"></td>
+            {% else %}
+            <td class="color{{ (i+j)%2+1}}" style="background-color: {{color2}};"></td>
+            {% endif %}
             {% endfor %}
         </tr>
-    {% endfor %}
+        {% endfor %}
     </table> 
     
-
-
 </body>
 </html>
