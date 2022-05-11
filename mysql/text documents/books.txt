@@ -1,0 +1,50 @@
+INSERT INTO `books`.`authors` (`id`, `name`, `created_at`, `updated_at`) VALUES ('1', 'Jane Austin', 'now()', 'now()');
+INSERT INTO `books`.`authors` (`id`, `name`, `created_at`, `updated_at`) VALUES ('2', 'Emily Dickinson', 'now()', 'now()');
+INSERT INTO `books`.`authors` (`id`, `name`, `created_at`, `updated_at`) VALUES ('3', 'Fyodor Dostoevsky', 'now()', 'now()');
+INSERT INTO `books`.`authors` (`id`, `name`, `created_at`, `updated_at`) VALUES ('4', 'William Shakespeare', 'now()', 'now()');
+INSERT INTO `books`.`authors` (`id`, `name`, `created_at`, `updated_at`) VALUES ('5', 'Lau Tzu', 'now()', 'now()');
+INSERT INTO `books`.`books` (`id`, `title`, `num_of_pages`, `created_at`, `updated_at`) VALUES ('1', 'C Sharp', '300', 'now()', 'now()');
+INSERT INTO `books`.`books` (`id`, `title`, `num_of_pages`, `created_at`, `updated_at`) VALUES ('2', 'Java', '400', 'now()', 'now()');
+INSERT INTO `books`.`books` (`id`, `title`, `num_of_pages`, `created_at`, `updated_at`) VALUES ('3', 'Python', '200 ', 'now()', 'now()');
+INSERT INTO `books`.`books` (`id`, `title`, `num_of_pages`, `created_at`, `updated_at`) VALUES ('4', 'PHP', '350', 'now()', 'now()');
+INSERT INTO `books`.`books` (`id`, `title`, `num_of_pages`, `created_at`, `updated_at`) VALUES ('5', 'Ruby', '500', 'now()', 'now()');
+UPDATE `books`.`books` SET `title` = 'C#' WHERE (`id` = '1');
+UPDATE `books`.`authors` SET `name` = 'Bill Shakespeare' WHERE (`id` = '4');
+INSERT INTO `books`.`favorites` (`author_id`, `book_id`) VALUES ('1', '1');
+INSERT INTO `books`.`favorites` (`author_id`, `book_id`) VALUES ('1', '2');
+INSERT INTO `books`.`favorites` (`author_id`, `book_id`) VALUES ('3', '1');
+INSERT INTO `books`.`favorites` (`author_id`, `book_id`) VALUES ('3', '2');
+INSERT INTO `books`.`favorites` (`author_id`, `book_id`) VALUES ('3', '3');
+INSERT INTO `books`.`favorites` (`author_id`, `book_id`) VALUES ('3', '4');
+INSERT INTO `books`.`favorites` (`author_id`, `book_id`) VALUES ('4', '1');
+INSERT INTO `books`.`favorites` (`author_id`, `book_id`) VALUES ('4', '2');
+INSERT INTO `books`.`favorites` (`author_id`, `book_id`) VALUES ('4', '3');
+INSERT INTO `books`.`favorites` (`author_id`, `book_id`) VALUES ('4', '4');
+INSERT INTO `books`.`favorites` (`author_id`, `book_id`) VALUES ('4', '5');
+
+SELECT * FROM books 
+JOIN favorites on books.id = favorites.book_id
+JOIN authors on authors.id = favorites.author_id
+WHERE books.id = 3;
+
+DELETE FROM favorites WHERE book_id=3 AND author_id=2;
+
+INSERT INTO `books`.`favorites` (`author_id`, `book_id`) VALUES ('5', '2');
+
+SELECT * FROM authors
+JOIN favorites ON authors.id = favorites.author_id
+JOIN books ON books.id = favorites.book_id
+WHERE authors.id = 3;
+
+
+SELECT * FROM books
+JOIN favorites ON books.id = favorites.book_id
+JOIN authors ON authors.id = favorites.author_id
+WHERE books.id = 5;
+
+
+
+
+
+
+
