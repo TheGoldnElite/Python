@@ -1,0 +1,23 @@
+INSERT INTO `dojoandninjas`.`dojos` (`id`, `name`, `created_at`, `updated_at`) VALUES ('1', 'Dojo 1', 'now()', 'now()');
+INSERT INTO `dojoandninjas`.`dojos` (`id`, `name`, `created_at`, `updated_at`) VALUES ('2 ', 'Dojo 2', 'now()', 'now()');
+INSERT INTO `dojoandninjas`.`dojos` (`id`, `name`, `created_at`, `updated_at`) VALUES ('3', 'Dojo 3', 'now()', 'now()');
+DELETE FROM dojos WHERE id=1
+DELETE FROM dojos WHERE id=2
+DELETE FROM dojos WHERE id=3
+INSERT INTO `dojoandninjas`.`dojos` (`id`, `name`, `created_at`, `updated_at`) VALUES ('1', 'Dojo 1', 'now()', 'now()');
+INSERT INTO `dojoandninjas`.`dojos` (`id`, `name`, `created_at`, `updated_at`) VALUES ('2 ', 'Dojo 2', 'now()', 'now()');
+INSERT INTO `dojoandninjas`.`dojos` (`id`, `name`, `created_at`, `updated_at`) VALUES ('3', 'Dojo 3', 'now()', 'now()');
+INSERT INTO `dojoandninjas`.`ninjas` (`id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojos_id`) VALUES ('4', 'Darth', 'Maul', '60', 'now()', 'now()', '2');
+INSERT INTO `dojoandninjas`.`ninjas` (`id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojos_id`) VALUES ('5', 'Darth', 'Sidius', '90', 'now()', 'now()', '2');
+INSERT INTO `dojoandninjas`.`ninjas` (`id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojos_id`) VALUES ('6', 'Darth', 'Plagues', '500', 'now()', 'now()', '2');
+INSERT INTO `dojoandninjas`.`ninjas` (`id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojos_id`) VALUES ('7', 'Yoda', 'Yoda', '800', 'now()', 'now()', '3');
+INSERT INTO `dojoandninjas`.`ninjas` (`id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojos_id`) VALUES ('8', 'Mace', 'Windu', '100', 'now()', 'now()', '3');
+INSERT INTO `dojoandninjas`.`ninjas` (`id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojos_id`) VALUES ('9', 'Luke', 'Skywalker', '80', 'now()', 'now()', '3');
+SELECT * FROM ninjas WHERE dojos_id=1;
+SELECT * FROM ninjas WHERE dojos_id=3;
+SELECT * FROM ninjas WHERE id=9;
+
+
+
+
+
