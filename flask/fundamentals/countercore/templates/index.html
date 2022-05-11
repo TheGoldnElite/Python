@@ -9,8 +9,8 @@
 <body>
 
     <h1>Counter</h1> 
-    {{session['num'] times}}
-    <form action="/">
+    <h2>"f{{session['num']}} times"</h2>
+    <form action="/handle", method="post">
         <label for="click"></label>
         <input type="submit" name="click"value="click">
         <a href="/destroy_session">Reset</a>
