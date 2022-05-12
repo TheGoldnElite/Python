@@ -2,7 +2,8 @@
 SELECT countries.name,languages.language,languages.percentage
 FROM countries
 JOIN languages ON countries.code=languages.country_code
-WHERE language = 'Slovene';
+WHERE language = 'Slovene'
+ORDER BY languages.percentage desc;
 
 2.
 SELECT countries.name AS country, COUNT(cities.id) AS number_cities
