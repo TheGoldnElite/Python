@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request,redirect
+from flask import Flask, render_template, request, redirect
 
 from users import User
 
@@ -8,15 +8,17 @@ app=Flask(__name__)
 def index():
     return redirect('/users')
 
+
 @app.route('/users')
 def users():
-    return render_template("users.html", users=User.get_all())
+    return render_template("users.html",users=User.get_all())
 
-@app.route('users/new')
+
+@app.route('/user/new')
 def new():
-    return render_template('/new_user.html')
+    return render_template("new_user.html")
 
-@app.route('/user/create',method=['post'])
+@app.route('/user/create',methods=['POST'])
 def create():
     print(request.form)
     User.save(request.form)
