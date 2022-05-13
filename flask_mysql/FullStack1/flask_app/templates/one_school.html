@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Check out this witcher school</h1>
+
+
+
+    <h5>School name:{{one_school_from_controller.name}}</h5>
+    <h5>List of Witchers Attending:</h5>
+    
+    {% for one_witcher in one_school_from_controller.witchers %}
+    <p>{{ one_witcher.name}}</p>
+    {% end for%}
+
+
+
+
+
+</body>
+</html>
