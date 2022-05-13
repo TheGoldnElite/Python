@@ -1,21 +1,20 @@
-from flask import Flask, render_template, request, redirect
-from users import User
 from flask_app import app
-
-
+from flask import render_template, request, redirect
 from flask_app.models.user import User
+
+    
 # gets all the burgers and returns them in a list of burger objects .
 @app.route('/user')
-def burgers():
-	return render_templates('results.html',users=User.get_all())
+def user():
+	return render_template('results.html',users=User.get_all())
         
 
 
 # burgers.py...
-from flask_app.models.burger import Burger
+from flask_app.models.user import User
 # gets all the burgers and returns them in a list of burger objects .
-@app.route('/create/burger',methods=['POST'])
-def create_burger():
+@app.route('/create/user',methods=['POST'])
+def create_user():
 	data = {
         "id" : request.form['name'],
         "first_name" : request.form['first_name'],
@@ -23,8 +22,8 @@ def create_burger():
         "created_at" : request.form['created_at'],
         "updated_at":request.form['updated_at']
 	}
-	Burger.save(data)
-	return redirect('/burgers')
+	User.save(data)
+	return redirect('/user')
 
 
 
