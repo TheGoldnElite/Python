@@ -1,4 +1,5 @@
-from mysqlconnection import connectToMySQL
+from flask_app.config.mysqlconnection import connectToMySQL
+
 
 class User:
     def __init__(self, data):
@@ -13,7 +14,7 @@ class User:
         return f"{self.first_name} {self.last_name}"
     
 
-
+    # gets all the users and returns them in a list of user objects .
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM users;"
@@ -33,7 +34,7 @@ class User:
 
     @classmethod
     def get_one(cls,data):
-        query  = "SELECT * FROM users WHERE id = %(id)s";
+        query  = "SELECT * FROM users WHERE id = %(id)s;"
         result = connectToMySQL('users_schema').query_db(query,data)
         return cls(result[0])
 
