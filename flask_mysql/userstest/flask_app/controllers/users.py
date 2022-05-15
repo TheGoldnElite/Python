@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, redirect
+from flask_app import app
+from flask import render_template,redirect,request
+from flask_app.models.user import User
 
-from users import Users_schema
 
-app=Flask(__name__)
+
+
 
 @app.route('/')
 def index():
@@ -53,5 +55,14 @@ def destroy(id):
     User.destroy(data)
     return redirect('/users')
 
-if __name__=="__main__":
-    app.run(debug=True)
+@app.route('/create/burger',methods=['POST'])
+def create_user():
+	data = {
+        "name" : request.form['name'],
+        "bun" : request.form['bun'],
+        "meat" : request.form['meat'],
+        "calories" : request.form['calories']
+	}
+	Burger.save(data)
+	return redirect('/burgers')
+        

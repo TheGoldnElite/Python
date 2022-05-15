@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors and Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <a  class="btn btn-warning float-end mt-2" href="/books">Dashboard</a>
+        <h1>show page</h1>
+        <h1>Info for book no. <span class="text-info">{{ book.id}}</span></h1>
+        <h2>Title: <span class="text-info">{{ book.title}}</span></h2>
+        <h2># of pages: <span class="text-info">{{ book.pages}}</span></h2>
+        <h2>Languages: <span class="text-info">{{ book.languages}}</span></h2>
+        <h2>Author: <span class="text-info">{{ book.first_name}}</span></h2>
+        <h2>Last Name: <span class="text-info">{{ book.last_name}}</span></h2>
+        <h2>Description: <span class="text-info">{{ book.description}}</span></h2>
+    </div>
+</body>
+</html>

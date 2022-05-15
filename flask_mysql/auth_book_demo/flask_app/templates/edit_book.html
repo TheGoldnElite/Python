@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors and Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <a class="btn btn-warning float end mt-2" href="/books">Dashboard</a>
+        <h1>Update Book No <span class='text-danger'>{{ book.id }}</span></h1>
+        
+        <form action="/update_book/{{ book.id }}" method="post">
+            <label>Title</label>
+            <input type="text" name="title" value="{{ book.title }}">
+            
+            <label>Number of pages</label>
+            <input type="number" name="pages" value="{{ book.pages }}">
+            
+            <label>Language</label>
+            <input type="text" name="language" value="{{ book.language }}">
+
+            <label>Select Author</label>
+            <select name="author_id">
+                {% for author in all_authors %}
+                <option value="{{ author.id }}">{{authors.first_name}}{{authors.last_name}}</option>
+                {% end for %}
+            </select>
+            <label>Description</label>
+            <textarea name="description">{{ book.description }}</textarea>
+            <input type="text" name="title">
+            <input class="btn btn-primary" type="submit" value="Update New Book!">
+        </form>
+    </div>
+</body>
+</html>
