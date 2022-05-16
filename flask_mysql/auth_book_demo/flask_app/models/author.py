@@ -16,7 +16,7 @@ class Author:
     #from sql table
     #(%()s == data from key in author_controller.py
     @classmethod
-    def create_author(cls,data)
+    def create_author(cls,data):
         query="INSERT INTO authors (first_name,last_name,created_at,updated_at) VALUES (%(first_name)s, %(last_name)s,NOW(),NOW());"
         results= connectToMySQL('auth_book_schema').query_db(query,data)
         return results

@@ -57,8 +57,8 @@ class Book:
                 "created_at": results[0]['authors.created_at'],
                 "updated_at": results[0]['authors.updated_at']
             }
-            book.author=author.Author(author_data)
-            return book
+        book.author=author.Author(author_data)
+        return book
 
     @classmethod
     def update_book_info(cls,data):
@@ -69,8 +69,8 @@ class Book:
     @classmethod
     def delete_one_book(cls,data):
         query = "DELETE FROM books WHERE id=%(book_id)s;"
-            results = connectToMySQL('auth_book_schema').query_db(query,data)
-            return
+        results = connectToMySQL('auth_book_schema').query_db(query,data)
+        return
 
 
 
