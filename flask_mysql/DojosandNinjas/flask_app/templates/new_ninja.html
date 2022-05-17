@@ -8,11 +8,11 @@
 </head>
 <body>
     <h1>New Ninja</h1>
-    <form action="/create/ninja" method="POST">
+    <form action="/create/ninja" method="post">
         <label>Dojo</label>
         <select name="dojo_id">
-            {% for dojo in dojos %}
-                <option value="{{Dojo.id}}">{{ dojos.name }}</option>
+            {% for dojo in all_dojo %}
+                <option value="{{dojo.id}}">{{ dojo.name }}</option>
             {% endfor %}
             </select>
         <label>First Name:</label>
@@ -20,7 +20,7 @@
         <label>Last Name:</label>
         <input type="text" name="last_name">
         <label>Age:</label>
-        <input type="text" name="age">
+        <input type="number" name="age">
         <input type="submit" value="Create">
     </form>
     <a href="/dojos">Home</a>

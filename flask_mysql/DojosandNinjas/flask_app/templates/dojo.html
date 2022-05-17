@@ -8,9 +8,11 @@
 </head>
 <body>
     <h1>New Dojo</h1>
-    <label>Name:</label>
-    <input type="text" name="Name">
-    <input type="submit" value="Create">
+    <form action="/create/dojo" method="post">
+        <label>Name:</label>
+        <input type="text" name="name">
+        <input type="submit" value="Create">
+    </form>
 
     <h1>All Dojos</h1>
     {% for one_dojo in all_dojos %} 

@@ -1,5 +1,5 @@
-from config.mysqlconnection import connectToMySQL
-from flask_app.models import dojo
+from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.models  import dojo 
 
 
 class Ninja:
@@ -17,13 +17,13 @@ class Ninja:
     def get_all(cls):
         query = "SELECT * FROM ninjas"
         ninjas=[]
-        results =  connectToMySQL('dojosandninjas').query_db(query)
+        results =  connectToMySQL('dojoandninjas').query_db(query)
         for row in results:
             ninjas.append(cls(row))
         return ninjas
 
     @classmethod
     def save(cls,data):
-        query = "INSERT INTO ninjas (dojos_id,first_name,last_name,age) VALUES (%(dojos)s, %(first_name)s,%(last_name)s,%(age)s"
-        return connectToMySQL('dojosandninjas').query_db(query,data)
+        query = "INSERT INTO ninjas (dojo_id,first_name,last_name,age) VALUES (%(dojo_id)s, %(first_name)s,%(last_name)s,%(age)s);"
+        return connectToMySQL('dojoandninjas').query_db(query,data)
 

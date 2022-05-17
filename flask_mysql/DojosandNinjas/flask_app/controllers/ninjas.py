@@ -1,15 +1,16 @@
 from flask_app import app
 from flask import render_template,redirect,request
-from models.dojo import Dojo
-from models.ninja import Ninja
+from flask_app.models import dojo
+from flask_app.models.ninja import Ninja
 
 
 @app.route('/ninjas')
 def ninjas():
-    return render_template('new_ninjas.html',all_ninjas=Ninja.get_all())
+    all_dojo=dojo.Dojo.get_all()
+    return render_template('new_ninja.html', all_dojo=all_dojo)
 
 
-@app.route('/ninja',methods=['POST'])
+@app.route('/create/ninja', methods=['POST'])
 def ninja():
     data = {
         "dojo_id":request.form['dojo_id'],
@@ -17,5 +18,6 @@ def ninja():
         "last_name":request.form['last_name'],
         "age":request.form['age']
     }
-    ninjas_id = Ninja.save(data)
-    return redirect('/ninjas')
+    Ninja.save(data)
+    return redirect('/dojos')
+
