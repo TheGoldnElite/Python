@@ -40,15 +40,15 @@ def login_user():
     session['first_name']=user.first_name
     session['last_name']=user.last_name
     
-    return redirect('/success')
+    return redirect('/dashboard')
     
-@app.route('/success')
-def success():
+@app.route('/dashboard')
+def dashboard():
     if 'user_id' not in session:
         flash("You must be logged in to view this website")
         return redirect('/')
 
-    return render_template('success.html')
+    return render_template('dashboard.html')
     
     
 
