@@ -1,6 +1,10 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 import re
+from flask_app import app
+from flask_bcrypt import Bcrypt
+from flask_app.models import recipe
+
 
 class User():
     def __init__(self,data):
@@ -15,20 +19,26 @@ class User():
     @classmethod
     def create_user(cls,data):
         query="INSERT INTO users (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s,%(email)s,%(password)s);"
-        result = connectToMySQL("loginred_schema").query_db(query,data)
+        result = connectToMySQL("recipe_schema").query_db(query,data)
         return result
 
     @classmethod
     def get_user_by_email(cls,data):
         query="SELECT * FROM users WHERE email = %(email)s"
 
-        results = connectToMySQL("loginred_schema").query_db(query,data)
+        results = connectToMySQL("recipe_schema").query_db(query,data)
 
         users=[]
         for item in results:
             users.append(User(item))
 
         return users
+
+    @classmethod
+    def get_id(cls,data):
+        query="SELECT * FROM users WHERE id = %(user_id)s;"
+        result=connectToMySQL("recipe_schema").query_db(query,data)
+        return cls(result[0])
 
     
     @staticmethod

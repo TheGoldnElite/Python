@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}     
+    {% if messages %}                            
+        {% for message in messages %}            
+            <p>{{message}}</p>                   
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <a href="/dashboard">Dashboard</a>
+    <h1>Create your dog!</h1>
+
+    <form action="/create_dog" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="name" name="name">
+        <label for="age">Breed</label>
+        <input type="text" id="breed" placeholder="breed" name="breed">
+        <label for="age">Age</label>
+        <input type="text" id="age" placeholder="age" name="age">
+        <button type="submit">Create Dog</button>
+    </form>
+ 
+    <h2>the owner will be:</h2>
+    <h2>{{user.first_name}}{{user.last_name}}</h2> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

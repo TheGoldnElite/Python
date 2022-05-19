@@ -1,6 +1,9 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 import re
+from flask_app import app
+from flask_bcrypt import Bcrypt
+bcrypt=Bcrypt(app)
 
 class User():
     def __init__(self,data):
@@ -13,16 +16,22 @@ class User():
         self.updated_at=data['updated_at']
 
     @classmethod
+    def get_by_id(cls,data):
+        query="SELECT * FROM users WHERE id=%(user_id)s;"
+        result = connectToMySQL("dogshow_schema").query_db(query,data)
+        return cls(result[0])
+
+    @classmethod
     def create_user(cls,data):
         query="INSERT INTO users (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s,%(email)s,%(password)s);"
-        result = connectToMySQL("loginred_schema").query_db(query,data)
+        result = connectToMySQL("dogshow_schema").query_db(query,data)
         return result
 
     @classmethod
     def get_user_by_email(cls,data):
         query="SELECT * FROM users WHERE email = %(email)s"
 
-        results = connectToMySQL("loginred_schema").query_db(query,data)
+        results = connectToMySQL("dogshow_schema").query_db(query,data)
 
         users=[]
         for item in results:
@@ -58,16 +67,12 @@ class User():
             is_valid=False
             flash("Password and confirm password must match exactly")
         
-        #first name must be at least 2 characters
         if len(data['first_name']) < 2:
             flash("First name must be at least 2 characters")
             is_valid=False
         
-        #last name must be at least 2 characters
         if len(data['last_name']) < 2:
             is_valid=False
             flash("Last name must be at least 2 characters")
-        
-        
         
         return is_valid
