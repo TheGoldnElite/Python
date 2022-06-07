@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Show</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}     
+    {% if messages %}                            
+    {% for message in messages %}            
+    <p>{{message}}</p>                   
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <a href="/dashboard">Projects</a>
+    <a href="/logout">Logout</a>
+    <h1>Edit {{project.title}}</h1>
+    <form action="/update/{{show.id}}" method="post">
+        <label>Title:</label><br>
+        <input type="text" name="title"><br>
+        <label>Network:</label><br>
+        <input type="text" name="network"><br>
+        <label>Release Date:</label><br>
+        <input type="number" name="release_date"><br>
+        <label>Description:</label><br>
+        <textarea name="description"></textarea><br>
+    
+        <input type="submit" value="Update">
+
+
+    </form>
+
+    
+</body>
+</html>

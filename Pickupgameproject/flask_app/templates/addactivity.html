@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Activity!</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}     
+    {% if messages %}                            
+    {% for message in messages %}            
+    <p>{{message}}</p>                   
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <a href="/dashboard">Dashboard</a>
+    <a href="/logout">Logout</a>
+    <h1>Hello {{ user.first_name}}! Wanna add a Activity?</h1>
+    <form action="/create" method="post">
+        <label>Event Name:</label><br>
+        <input type="text" name="event_name"><br>
+        <label>Location:</label><br>
+        <input type="text" name="location"><br>
+        <label>Description:</label><br>
+        <textarea cols=30 rows=10 name="description"></textarea><br>
+        <label>Date:</label><br>
+        <input type="date" name="date"><br>
+        <label>Members:</label><br>
+        <input type="number" name="members"></input><br>
+        <!-- <label>Time:</label><br>
+        <input type="time" name="time"></input><br> -->
+        <input type="submit" value="Add Activity!">
+    </form>
+
+    
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+</head>
+<body class="container" class="center-align" background-color="red">
+    
+  <!-- <div class="carousel carousel-slider center">
+    <div class="carousel-fixed-item center">
+      <a class="btn waves-effect white grey-text darken-text-2">button</a>
+    </div>
+    <div class="carousel-item red white-text" href="#one!">
+      <h2>First Panel</h2>
+      <p class="white-text">This is your first panel</p>
+    </div>
+    <div class="carousel-item amber white-text" href="#two!">
+      <h2>Second Panel</h2>
+      <p class="white-text">This is your second panel</p>
+    </div>
+    <div class="carousel-item green white-text" href="#three!">
+      <h2>Third Panel</h2>
+      <p class="white-text">This is your third panel</p>
+    </div>
+    <div class="carousel-item blue white-text" href="#four!">
+      <h2>Fourth Panel</h2>
+      <p class="white-text">This is your fourth panel</p>
+    </div>
+  </div> -->
+    
+    <a href='/pickup/add'>Add a game!</a>
+    <a href="/logout">Logout</a>
+        <h1>Welcome to PickUP, {{user.first_name}}!</h1>
+        <div class="card-panel hoverable"> 
+            {% for activity in all_activities %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                <h5 class="card-title">Event Name:{{activity.event_name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">posted by:{{activity.owner.first_name}} {{activity.owner.last_name}}</h6>
+                <p class="card-text">Location: {{activity.location}}</p>
+                <p class="card-text">Description:{{activity.description}}</p>
+                <p class="card-text">Date:{{activity.date.strftime("%b %d %Y")}}</p>
+                <p class="card-text">Members:{{activity.members}}</p>
+                <a href="/pickup/{{ activity.id }}" class="card-link">Show</a>
+                <a href="/edit/{{activity.id}}" class="card-link">Edit</a>
+                <a href="/delete/{{activity.id}}" class="card-link">Delete</a>
+                </div>
+            </div> 
+            {% endfor %}
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="/hello.js"></script>
+    </body>
+</html>
+

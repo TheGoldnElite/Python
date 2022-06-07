@@ -1,0 +1,1 @@
+SELECT * FROM pickup_schema.activities;
